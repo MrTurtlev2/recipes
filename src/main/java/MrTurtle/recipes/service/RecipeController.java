@@ -3,10 +3,7 @@ package MrTurtle.recipes.service;
 import MrTurtle.recipes.model.Recipe;
 import MrTurtle.recipes.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +21,10 @@ public class RecipeController {
     @GetMapping(path = "/id/{id}")
     public Recipe getRecipeById(@PathVariable("id") int id) {
         return  recipeRepository.getReferenceById(id);
+    }
+    @PostMapping(path = "/add")
+    public Recipe addNewRecipe(@RequestBody Recipe recipe) {
+        return recipeRepository.save(recipe);
     }
 
 }
