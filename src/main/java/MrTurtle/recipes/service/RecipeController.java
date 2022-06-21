@@ -26,5 +26,9 @@ public class RecipeController {
     public Recipe addNewRecipe(@RequestBody Recipe recipe) {
         return recipeRepository.save(recipe);
     }
+    @PutMapping(path = "update")
+    public Recipe updateRecipe(@RequestBody Recipe recipe) {
+        return recipeRepository.save(recipe);
+    }
 
 }
