@@ -15,13 +15,14 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Recipe implements Serializable {
+public class Country implements Serializable {
     @Id
-    public Integer id;
+    public int id;
+
     @Column
     public String name;
-    @Column
-    public String type;
-    @Column
-    public String country;
+
+    public Country(String name){
+        this.name = name;
+    }
 }
