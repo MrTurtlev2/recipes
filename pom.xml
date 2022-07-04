@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>recipes_service</module>
+        <module>users</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>

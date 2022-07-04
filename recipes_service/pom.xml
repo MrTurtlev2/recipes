@@ -10,7 +10,6 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
-<!--	<groupId>MrTurtle</groupId>-->
 	<artifactId>recipes_service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>recipes_service</name>
