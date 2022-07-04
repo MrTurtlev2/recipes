@@ -5,6 +5,7 @@ import MrTurtle.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,11 @@ public class UserController {
 
     @PutMapping(path = "/update")
     public User updateUser(@RequestBody User user) {
-        return userRepository.save(user);
+        User userWithId = userRepository.getReferenceById(user.getId());
+        if(userWithId == null) {
+            throw new EntityNotFoundException();
+        } else {
+            return userRepository.save(user);
+        }
     }
-
 }
