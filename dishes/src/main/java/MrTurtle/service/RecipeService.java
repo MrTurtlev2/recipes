@@ -19,15 +19,39 @@ public class RecipeService {
     private DishRepository dishRepository;
 
     public int createNewRecipe (Recipe recipe){
-        System.out.println(recipe);
-        if(countryRepository.findCountryByName(recipe.getCountry().getName()) == null){
-            countryRepository.save(new Country(recipe.getCountry().getName()));
-            System.out.println(recipe.getCountry().getName());
+        Dish type = updateDish(recipe.getType().getName());
+        Country country = updateCountry(recipe.getCountry().getName());
+
+        return recipeRepository.save(
+                new Recipe(recipe.getName(),
+                        type,
+                        country)
+        ).getId();
+    }
+
+    public Recipe updateRecipe(int id, Recipe recipe) {
+        Recipe recipeToUpdate = recipeRepository.getReferenceById(id);
+        if(!recipe.name.equals(recipeToUpdate.name)){
+            recipeToUpdate.setName(recipe.name);
         }
-        if(dishRepository.findDishByName(recipe.getType().getName()) == null){
-            dishRepository.save(new Dish(recipe.getType().getName()));
-            System.out.println(recipe.getType().getName());
+        recipeToUpdate.setType(updateDish(recipe.getType().getName()));
+        recipeToUpdate.setCountry(updateCountry(recipe.getCountry().getName()));
+        return recipeRepository.save(recipeToUpdate);
+    }
+
+    public Country updateCountry(String countryName){
+        Country country = countryRepository.findCountryByName(countryName);
+        if(country == null){
+            country = countryRepository.save(new Country(countryName));
         }
-        return recipeRepository.save(recipe).getId();
+        return country;
+    }
+
+    public Dish updateDish(String dishName){
+        Dish dish = dishRepository.findDishByName(dishName);
+        if (dish == null){
+            dish = dishRepository.save(new Dish(dishName));
+        }
+        return dish;
     }
 }

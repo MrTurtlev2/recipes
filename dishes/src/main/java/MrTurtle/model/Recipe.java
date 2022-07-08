@@ -26,4 +26,10 @@ public class Recipe implements Serializable {
     @ManyToOne(targetEntity = Country.class)
     @JoinColumn(name = "country", referencedColumnName = "name")
     public Country country;
+
+    public Recipe(String name, Dish type , Country country){
+        this.name = name;
+        this.type = type;
+        this.country = country;
+    }
 }

@@ -30,9 +30,9 @@ public class RecipeController {
     public int createRecipe(@RequestBody Recipe recipe){
         return recipeService.createNewRecipe(recipe);
     }
-    @PutMapping(path = "/update")
-    public Recipe updateRecipe(@RequestBody Recipe recipe) {
-        return recipeRepository.save(recipe);
+    @PutMapping(path = "/update/{id}")
+    public Recipe updateRecipe(@PathVariable("id") int id ,@RequestBody Recipe recipe) {
+        return recipeService.updateRecipe(id, recipe);
     }
 
 }
