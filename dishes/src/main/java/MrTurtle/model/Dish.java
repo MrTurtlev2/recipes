@@ -11,11 +11,11 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table
+@Table(name = "dish")
 @NoArgsConstructor
 @Getter
 @Setter
-public class Dish {
+public class Dish implements Serializable {
     @Id
     public int id;
 

@@ -11,11 +11,11 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table
+@Table(name = "country")
 @NoArgsConstructor
 @Getter
 @Setter
-public class Country {
+public class Country implements Serializable {
     @Id
     public int id;
 

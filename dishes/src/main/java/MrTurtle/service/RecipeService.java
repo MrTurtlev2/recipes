@@ -19,11 +19,11 @@ public class RecipeService {
     private DishRepository dishRepository;
 
     public int createNewRecipe (Recipe recipe){
-        if(countryRepository.findCountryByName(recipe.getName()) == null){
-            countryRepository.save(new Country(recipe.getCountry()));
+        if(countryRepository.findCountryByName(recipe.getCountry().getName()) == null){
+            countryRepository.save(recipe.getCountry());
         }
-        if(dishRepository.findDishByName(recipe.getType()) == null){
-            dishRepository.save(new Dish(recipe.getType()));
+        if(dishRepository.findDishByName(recipe.getType().getName()) == null){
+            dishRepository.save(recipe.getType());
         }
         return recipeRepository.save(recipe).getId();
     }

@@ -19,13 +19,14 @@ public class UserController {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-    @GetMapping(path = "/all/{id}")
+    @GetMapping(path = "/{id}")
     public User getUserById(@PathVariable("id") int id) {
         return userRepository.getReferenceById(id);
     }
     @PostMapping(path = "/add")
     public User createUser(@RequestBody User user){
-        return userRepository.save(user);
+//        return userRepository.save(user);
+        return userRepository.save(new User(user.name, user.password, user.age));
     }
 
     @PutMapping(path = "/update")
