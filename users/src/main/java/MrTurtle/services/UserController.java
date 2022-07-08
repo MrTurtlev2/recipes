@@ -25,7 +25,6 @@ public class UserController {
     }
     @PostMapping(path = "/add")
     public User createUser(@RequestBody User user){
-//        return userRepository.save(user);
         return userRepository.save(new User(user.name, user.password, user.age));
     }
 

@@ -14,6 +14,7 @@ import java.io.Serializable;
 @Setter
 public class Recipe implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
 
     public String name;
